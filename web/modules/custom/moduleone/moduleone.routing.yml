@@ -2,6 +2,6 @@ moduleone.content:
   path: '/moduleone'
   defaults:
     _controller: 'Drupal\moduleone\Controller\ModuleOneController::content'
-    _title: 'Hello world'
+    _title: 'data.gov'
   requirements:
     _permission: 'access content'

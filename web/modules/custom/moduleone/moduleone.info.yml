@@ -1,5 +1,5 @@
 name: 'ModuleOne'
 type: module
-description: 'My First Module'
+description: 'Module to display JSON response from data.gov'
 core: 8.x
 package: 'Custom'

@@ -16,7 +16,7 @@ function moduleone_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.moduleone':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('My First Module') . '</p>';
+      $output .= '<p>' . t('Module to display JSON response from data.gov') . '</p>';
       return $output;
 
     default:
