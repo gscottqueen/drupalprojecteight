@@ -1,0 +1,22 @@
+uuid: 833e67c5-5d15-47a5-8669-68753b4e263a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - eighteenfsub
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: eighteenfsub_breadcrumbs
+theme: eighteenfsub
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

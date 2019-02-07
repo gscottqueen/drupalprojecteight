@@ -1,0 +1,22 @@
+uuid: 48efc25d-cd5e-407a-b673-a57a5175cfcc
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - credit_due
+_core:
+  default_config_hash: lstTbdbRuvnFLz2Ooz3rQ99KpClLoo2YgOl_4ywKGDA
+id: credit_due_messages
+theme: credit_due
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

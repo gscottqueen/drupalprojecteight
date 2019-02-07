@@ -1,0 +1,5 @@
+name: 'ModuleOne'
+type: module
+description: 'My First Module'
+core: 8.x
+package: 'Custom'

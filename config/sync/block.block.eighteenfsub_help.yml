@@ -1,0 +1,22 @@
+uuid: 589e1433-9078-4edb-bac4-328be4f68acd
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - eighteenfsub
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: eighteenfsub_help
+theme: eighteenfsub
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

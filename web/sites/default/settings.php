@@ -791,3 +791,5 @@ try {
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
+
+$settings['twig_tweak_enable_php_filter'] = TRUE;

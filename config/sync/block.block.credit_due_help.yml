@@ -1,0 +1,22 @@
+uuid: 2053f061-0070-4629-b76d-76445bc1b389
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - credit_due
+_core:
+  default_config_hash: uYa53R3ZENpuhKi3hIXI3WpE7Sm8QeKdSEzEGnA5Zqg
+id: credit_due_help
+theme: credit_due
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

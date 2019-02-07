@@ -1,0 +1,20 @@
+uuid: c3854907-c4c5-4fe2-9c9e-99a65aacc9c7
+langcode: en
+status: true
+dependencies:
+  theme:
+    - credit_due
+_core:
+  default_config_hash: JZnvrsiqGE97r-g7k2Pug9BQucug70-j9uuaksNdZhY
+id: credit_due_page_title
+theme: credit_due
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

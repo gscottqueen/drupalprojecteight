@@ -1,0 +1,22 @@
+uuid: 9c2fa187-18aa-49d7-9b62-94cd3d74960b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - eighteenfsub
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: eighteenfsub_messages
+theme: eighteenfsub
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

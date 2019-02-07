@@ -1,0 +1,14 @@
+uuid: 6685e1d2-bc31-4e94-9a79-af4528e5ef94
+name: drupalproject
+mail: scott.queen@bixal.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

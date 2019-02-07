@@ -1,0 +1,20 @@
+uuid: 909df270-6c00-4ac8-9061-731ae1d6515f
+langcode: en
+status: true
+dependencies:
+  theme:
+    - eighteenfsub
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: eighteenfsub_page_title
+theme: eighteenfsub
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

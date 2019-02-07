@@ -1,0 +1,22 @@
+uuid: 1281b646-3425-4544-b8c7-4c73b59b4c95
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - eighteenfsub
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: eighteenfsub_powered
+theme: eighteenfsub
+region: disabled
+weight: -6
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

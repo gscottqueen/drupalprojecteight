@@ -1,0 +1,14 @@
+{
+  "name": "drupal/moduleone",
+  "type": "drupal-module",
+  "description": "My First Module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/moduleone",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/moduleone",
+    "source": "http://cgit.drupalcode.org/moduleone"
+  },
+  "require": { }
+}

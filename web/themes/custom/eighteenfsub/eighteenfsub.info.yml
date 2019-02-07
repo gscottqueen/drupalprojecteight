@@ -41,3 +41,4 @@ regions:
   footer_menu: 'Footer Menu'
   footer: 'Primary Footer'
   footer_secondary: 'Secondary Footer'
+  disabled: 'Disabled'

@@ -1,0 +1,22 @@
+uuid: 1d1a2848-4090-410b-a1ee-229d0b0303a9
+langcode: en
+status: true
+dependencies:
+  theme:
+    - credit_due
+_core:
+  default_config_hash: SH7-nzaCk3HYfo2XI9jCifw8z1iI5D3UhzBGz6OmugU
+id: credit_due_local_tasks
+theme: credit_due
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }
