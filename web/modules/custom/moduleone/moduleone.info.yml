@@ -1,5 +1,0 @@
-name: 'ModuleOne'
-type: module
-description: 'Module to display JSON response from data.gov'
-core: 8.x
-package: 'Custom'

@@ -6,6 +6,7 @@
 /web/themes/contrib/
 /web/profiles/contrib/
 /web/libraries/
+/config/sync/
 
 # Ignore .sass-cache files
 /.sass-cache/

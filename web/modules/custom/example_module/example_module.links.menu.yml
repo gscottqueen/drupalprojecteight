@@ -1,0 +1,10 @@
+system.admin_config_custom:
+  title: 'Custom'
+  route_name: system.admin_config_custom
+  parent: system.admin_config
+  description: 'Custom Configuration'
+example_module.example_form:
+  title: 'Example Form Module'
+  route_name: example_module.example_form
+  parent: system.admin_config_custom
+  description: 'Example Modules to use for reference.'

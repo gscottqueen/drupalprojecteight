@@ -86,3 +86,9 @@ phpcs:
 phpcbf:
 	@echo "Beautifying custom code"
 	docker-compose run php vendor/bin/phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom --ignore=*.min.js --ignore=*.min.css
+
+tools:
+	@echo "Building our custom ReactJS tools"
+	@cd ./web/modules/custom/react_tools/tools/; npm install && npm run build
+	@echo "Clearing Drupal Caches"
+	@docker-compose run --rm php drupal cache:rebuild all
