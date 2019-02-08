@@ -13,7 +13,7 @@ _core:
 id: eighteenfsub_tools
 theme: eighteenfsub
 region: disabled
-weight: -5
+weight: -4
 provider: null
 plugin: 'system_menu_block:tools'
 settings:

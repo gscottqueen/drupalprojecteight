@@ -13,7 +13,7 @@ _core:
 id: eighteenfsub_footer
 theme: eighteenfsub
 region: disabled
-weight: -7
+weight: -6
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

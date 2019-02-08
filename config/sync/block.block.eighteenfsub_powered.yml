@@ -11,7 +11,7 @@ _core:
 id: eighteenfsub_powered
 theme: eighteenfsub
 region: disabled
-weight: -6
+weight: -5
 provider: null
 plugin: system_powered_by_block
 settings:
