@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function example_module_theme() {
+  return [
+    'example_module_block' => [
+      'variables' => ['test_var' => NULL],
+    ],
+  ];
+}
