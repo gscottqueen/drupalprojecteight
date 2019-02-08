@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function datagov_theme() {
+  return [
+    'datagov_block' => [
+      'variables' => ['test_var' => NULL],
+    ],
+  ];
+}

@@ -1,0 +1,20 @@
+# define a path and use the system controller to help build the item in our menu block page
+system.admin_config_custom:
+  path: '/admin/config/custom'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Custom'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+# define a path for our custom module form
+datagov.datagov_form:
+  path: '/admin/config/custom/datagov'
+  defaults:
+    _form: '\Drupal\datagov\Form\DataGovForm'
+    _title: 'Data.gov Form'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

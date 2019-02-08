@@ -1,0 +1,6 @@
+name: Data.gov Module
+description: Allows an admin to supply API parameters for calling a Data.gov endpoint
+package: Custom
+type: module
+version: 1.0
+core: 8.x
