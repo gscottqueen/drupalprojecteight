@@ -1,3 +1,4 @@
+# define a path and use the system controller to help build the item in our menu block page
 system.admin_config_custom:
   path: '/admin/config/custom'
   defaults:
@@ -7,6 +8,7 @@ system.admin_config_custom:
     _permission: 'access administration pages'
   options:
     _admin_route: TRUE
+# define a path for our custom module form
 example_module.example_form:
   path: '/admin/config/custom/example'
   defaults:

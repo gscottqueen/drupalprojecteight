@@ -1,5 +1,5 @@
 name: Example Module
-description: An experimental module to build your first Drupal 8 module
+description: An experimental module to helo you build in Drupal 8
 package: Custom
 type: module
 version: 1.0

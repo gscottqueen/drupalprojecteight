@@ -31,13 +31,13 @@ class ExampleForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('example_module.example');
-    $form['endpoint_url'] = [
+    $form['input_content'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Endpoint URL'),
-      '#description' => $this->t('Input the URL endpoint you want to query from.'),
+      '#title' => $this->t('Example Field'),
+      '#description' => $this->t('This is an example input form.'),
       '#maxlength' => 2000,
       '#size' => 500,
-      '#default_value' => $config->get('endpoint_url'),
+      '#default_value' => $config->get('input_content'),
     ];
     return parent::buildForm($form, $form_state);
   }
@@ -56,7 +56,7 @@ class ExampleForm extends ConfigFormBase {
     parent::submitForm($form, $form_state);
 
     $this->config('example_module.example')
-      ->set('endpoint_url', $form_state->getValue('endpoint_url'))
+      ->set('input_content', $form_state->getValue('input_content'))
       ->save();
   }
 

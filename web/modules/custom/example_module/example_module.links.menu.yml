@@ -1,10 +1,12 @@
+# create a custom admin menu group
 system.admin_config_custom:
   title: 'Custom'
   route_name: system.admin_config_custom
   parent: system.admin_config
   description: 'Custom Configuration'
+# nest a new menu link for our module form under the new group
 example_module.example_form:
   title: 'Example Form Module'
   route_name: example_module.example_form
   parent: system.admin_config_custom
-  description: 'Example Modules to use for reference.'
+  description: 'Example Module to use for reference.'
