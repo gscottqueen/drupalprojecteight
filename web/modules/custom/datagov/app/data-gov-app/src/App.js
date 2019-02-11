@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Threats from './Threats.js'
+
 class App extends Component {
-  render() {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      threats: [],
+    };
+  }
+
+  componentWillMount() {
+    fetch('https://api.fda.gov/food/enforcement.json?search=report_date:[20040101+TO+20131231]&limit=100')
+      .then(response => response.json())
+      // .then(data => this.setState({ data }));
+      .then(data => {
+        this.setState({
+          threats: data.results,
+        })
+      });
+  }
+
+  render () {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div>
+          <Threats threatData={this.state.threats} />
+        </div>
       </div>
     );
   }
