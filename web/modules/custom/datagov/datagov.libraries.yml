@@ -1,0 +1,10 @@
+data-gov-app:
+  version: 1.x
+  css:
+    theme:
+      ./app/data-gov-app/build/static/css/main.da00d9a1.chunk.css: {}
+      ./app/data-gov-app/build/static/css/test.css: {}
+  js:
+    ./app/data-gov-app/build/static/js/1.13eeb203.chunk.js: {}
+    ./app/data-gov-app/build/static/js/main.6858b153.chunk.js: {}
+    ./app/data-gov-app/build/static/js/runtime~main.229c360f.js: {}

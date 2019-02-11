@@ -7,7 +7,6 @@
 /web/profiles/contrib/
 /web/libraries/
 /config/sync/
-/db/
 
 # Ignore .sass-cache files
 /.sass-cache/
