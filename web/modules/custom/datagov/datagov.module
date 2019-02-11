@@ -5,7 +5,7 @@
 function datagov_theme() {
   return [
     'datagov_block' => [
-      'variables' => ['test_var' => NULL],
+      'variables' => ['error' => NULL],
     ],
   ];
 }

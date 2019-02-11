@@ -1,10 +1,4 @@
-# create a custom admin menu group
-# system.admin_config_custom:
-#   title: 'Custom'
-#   route_name: system.admin_config_custom
-#   parent: system.admin_config
-#   description: 'Custom Configuration'
-# nest a new menu link for our module form under the new group
+# nest a new menu link for our module form under the custom group
 datagov.datagov_form:
   title: 'Data.gov Module'
   route_name: datagov.datagov_form

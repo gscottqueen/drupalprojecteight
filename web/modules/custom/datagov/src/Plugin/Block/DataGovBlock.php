@@ -22,7 +22,7 @@ class DataGovBlock extends BlockBase {
 
     return [
       '#theme' => 'datagov_block',
-      '#test_var' => $this->t('Data Goes Here'),
+      '#error' => $this->t('React did not render.'),
     ];
   }
 
