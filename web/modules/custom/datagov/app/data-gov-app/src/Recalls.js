@@ -44,24 +44,24 @@ function Recalls(props) {
           <caption className="recall-list--item-detail_table-caption">Recall Details</caption>
           <thead>
             <tr>
-              <th scope="col">Event ID</th>
-              <th scope="col">Recall Number</th>
-              <th scope="col">Code Info</th>
-              <th scope="col">Product Type</th>
-              <th scope="col">Postal Code</th>
-              <th scope="col">Product Distribution Pattern</th>
-              <th scope="col">Product Quantity</th>
+              {!recall.event_id ? null : <th scope="col">Event ID</th>}
+              {!recall.recall_number ? null : <th scope="col">Recall Number</th>}
+              {!recall.code_info ? null : <th scope="col">Code Info</th>}
+              {!recall.product_type ? null : <th scope="col">Product Type</th>}
+              {!recall.postal_code ? null : <th scope="col">Postal Code</th>}
+              {!recall.distribution_pattern ? null : <th scope="col">Product Distribution Pattern</th>}
+              {!recall.product_quantity ? null : <th scope="col">Product Quantity</th>}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">{recall.event_id}</th>
-              <td>{recall.recall_number}</td>
-              <td>{recall.code_info}</td>
-              <td>{recall.product_type}</td>
-              <td>{recall.postal_code}</td>
-              <td>{recall.distribution_pattern}</td>
-              <td>{recall.product_quantity}</td>
+              {!recall.event_id ? null : <th scope="row">{recall.event_id}</th>}
+              {!recall.recall_number ? null : <td>{recall.recall_number}</td>}
+              {!recall.code_info ? null : <td>{recall.code_info}</td>}
+              {!recall.product_type ? null : <td>{recall.product_type}</td>}
+              {!recall.postal_code ? null : <td>{recall.postal_code}</td>}
+              {!recall.distribution_pattern ? null : <td>{recall.distribution_pattern}</td>}
+              {!recall.product_quantity ? null : <td>{recall.product_quantity}</td>}
             </tr>
           </tbody>
         </table>
