@@ -28,7 +28,7 @@ function Recalls(props) {
   const recalls = props.recallData;
   const recallList = recalls.map((recall, index) =>
     <AccordionItem className="recall-list--item usa-accordion" key={index}>
-      <AccordionItemTitle className="recall-list--item-detail usa-accordion-button" aria-expanded={}>
+      <AccordionItemTitle className="recall-list--item-detail usa-accordion-button" aria-expanded="false">
         <span className="recall-list--item-detail_state">{recall.city}, {recall.state} </span>
         <span className="recall-list--item-detail_date">({parseDate(recall.report_date)})</span>
       </AccordionItemTitle>
@@ -39,7 +39,7 @@ function Recalls(props) {
     </AccordionItem>
   );
   return (
-    <Accordion className="recall-list usa-unstyled-list">{recallList}</Accordion>
+    <Accordion className="recall-list usa-unstyled-list" accordion={false}>{recallList}</Accordion>
   );
 }
 

@@ -11,6 +11,8 @@
 # production
 /build
 
+/src/uswds-assets
+
 # misc
 .DS_Store
 .env.local
