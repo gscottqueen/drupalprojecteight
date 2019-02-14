@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import Threats from './Threats'
+import React, { Component } from 'react'
+import './App.css'
+import Recalls from './Recalls'
 
 class App extends Component {
 
@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      threats: [],
+      recalls: [],
       disclaimer: '',
     };
   }
@@ -38,7 +38,7 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
 
-        function parseDate(results) {
+        function sortDate(results) {
           let resultList = [...results]
           // our sort function
           function compareDates(a, b) {
@@ -60,7 +60,7 @@ class App extends Component {
 
         this.setState({
           disclaimer: data.meta.disclaimer,
-          threats: parseDate(data.results),
+          recalls: sortDate(data.results),
         })
       });
   }
@@ -69,7 +69,7 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <Threats threatData={this.state.threats} />
+          <Recalls recallData={this.state.recalls} />
         </div>
         <div className="disclaimer">{this.state.disclaimer}</div>
       </div>
