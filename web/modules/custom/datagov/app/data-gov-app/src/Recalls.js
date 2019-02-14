@@ -65,7 +65,7 @@ function Recalls(props) {
             </tr>
           </tbody>
         </table>
-        <h4 className="recall-list--item-detail_content-">Reason for recall</h4>
+        <h4 className="recall-list--item-detail_content-heading">Reason for recall</h4>
         <p className="recall-list--item-detail_content-reason">{recall.reason_for_recall}</p>
         <div>
           <span className="recall-list--item-detail_content-initiated">{recall.voluntary_mandated}{!recall.state ? null : '. ' }</span>

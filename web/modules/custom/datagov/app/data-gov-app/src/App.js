@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Recalls from './Recalls'
+import Map from './Map'
 
 class App extends Component {
 
@@ -68,8 +69,14 @@ class App extends Component {
   render () {
     return (
       <div className="App">
+      <Map></Map>
+        <div className="disclaimer usa-alert usa-alert-info" role="alert">
+          <div class="usa-alert-body">
+            <h3 class="usa-alert-heading">About These Results</h3>
+            <p class="usa-alert-text">{this.state.disclaimer}</p>
+          </div>
+        </div>
         <Recalls recallData={this.state.recalls} />
-        <div className="disclaimer">{this.state.disclaimer}</div>
       </div>
     );
   }

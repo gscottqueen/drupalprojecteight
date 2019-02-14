@@ -4,10 +4,15 @@
   font-style: italic;
 }
 
-.recall-list--item-detail_table-caption {
+.recall-list--item-detail_table-caption,
+.recall-list--item-detail_content-heading {
   text-transform: capitalize;
 }
 
 .recall-list--item-detail_description {
   font-weight: 400;
+}
+
+.disclaimer.usa-alert {
+  margin: 1.5rem 0;
 }
