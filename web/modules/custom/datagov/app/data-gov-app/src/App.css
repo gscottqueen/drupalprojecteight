@@ -1,47 +1,13 @@
-/* .App {
-  background-color: #282c34;
-  color: white;
-  margin: 0;
-  padding: 0;
+.recall-list--item-detail_date {
+  font-weight: 400;
+  font-size: small;
+  font-style: italic;
 }
 
-.threat-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.recall-list--item-detail_table-caption {
+  text-transform: capitalize;
 }
 
-.threat-list--detail {
-  padding: 2rem;
+.recall-list--item-detail_description {
+  font-weight: 400;
 }
-
-.threat-list--detail p {
-  margin-top: 0;
-}
-
-.threat-list--detail-state {
-  margin-bottom: 2px;
-  font-weight: bold;
-  font-size: 50px;
-}
-
-.threat-list--detail-date {
-  font-size: 25px;
-}
-
-.threat-list--detail-description {
-  padding: 20px;
-  background: rgb(241, 241, 241);
-  color: black;
-  border-radius: 10px;
-}
-
-.threat-list--detail-recall::before {
-  color: salmon;
-  content: '* '
-}
-
-.disclaimer {
-  padding: 2rem;
-  background-color: salmon;
-} */

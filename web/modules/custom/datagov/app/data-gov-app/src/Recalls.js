@@ -26,15 +26,51 @@ function parseDate(date) {
 
 function Recalls(props) {
   const recalls = props.recallData;
-  const recallList = recalls.map((recall, index) =>
-    <AccordionItem className="recall-list--item usa-accordion" key={index}>
+  const recallList = recalls.map((recall, index, comma) =>
+    <AccordionItem className="recall-list--item usa-accordion-bordered" key={index}>
       <AccordionItemTitle className="recall-list--item-detail usa-accordion-button" aria-expanded="false">
-        <span className="recall-list--item-detail_state">{recall.city}, {recall.state} </span>
-        <span className="recall-list--item-detail_date">({parseDate(recall.report_date)})</span>
+        <time className="recall-list--item-detail_date" dateTime={recall.report_date}>{parseDate(recall.report_date)}</time>
+        <h3 className="recall-list--item-detail_state">
+          {recall.city}
+          {!recall.state ? null : ', ' }{recall.state}
+          {recall.country === 'United States' ? null : ', ' }{recall.country === 'United States' ? null : recall.country}
+        </h3>
+        <span className="recall-list--item-detail_tag usa-label">{recall.classification}</span>
+        <span className="recall-list--item-detail_tag usa-label">{recall.status}</span>
+        <p className="recall-list--item-detail_description">{recall.product_description}</p>
       </AccordionItemTitle>
       <AccordionItemBody className="recall-list--item-detail_content usa-accordion-content">
-        <p className="recall-list--item-detail_description">{recall.product_description}</p>
-        <p className="recall-list--item-detail_recall">{recall.reason_for_recall}</p>
+        <table>
+          <caption className="recall-list--item-detail_table-caption">Recall Details</caption>
+          <thead>
+            <tr>
+              <th scope="col">Event ID</th>
+              <th scope="col">Recall Number</th>
+              <th scope="col">Code Info</th>
+              <th scope="col">Product Type</th>
+              <th scope="col">Postal Code</th>
+              <th scope="col">Product Distribution Pattern</th>
+              <th scope="col">Product Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{recall.event_id}</th>
+              <td>{recall.recall_number}</td>
+              <td>{recall.code_info}</td>
+              <td>{recall.product_type}</td>
+              <td>{recall.postal_code}</td>
+              <td>{recall.distribution_pattern}</td>
+              <td>{recall.product_quantity}</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 className="recall-list--item-detail_content-">Reason for recall</h4>
+        <p className="recall-list--item-detail_content-reason">{recall.reason_for_recall}</p>
+        <div>
+          <span className="recall-list--item-detail_content-initiated">{recall.voluntary_mandated}{!recall.state ? null : '. ' }</span>
+          <span className="recall-list--item-detail_content-notification">{recall.initial_firm_notification}{!recall.state ? null : '.' }</span>
+        </div>
       </AccordionItemBody>
     </AccordionItem>
   );

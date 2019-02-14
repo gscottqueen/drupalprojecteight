@@ -68,9 +68,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <div>
-          <Recalls recallData={this.state.recalls} />
-        </div>
+        <Recalls recallData={this.state.recalls} />
         <div className="disclaimer">{this.state.disclaimer}</div>
       </div>
     );
