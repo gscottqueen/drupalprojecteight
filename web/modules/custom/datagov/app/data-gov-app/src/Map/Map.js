@@ -4,6 +4,8 @@ import {
   ZoomableGroup,
   Geographies,
   Geography,
+  // Markers,
+  // Marker,
 } from "react-simple-maps"
 
 import GeoJSON from './world-50m.json'
@@ -15,6 +17,29 @@ const wrapperStyles = {
 }
 
 class Map extends Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props)
+
+
+    this.state = {
+      // recalls: [],
+      geoCodes: [],
+    };
+  }
+  componentDidMount() {
+
+    fetch('http://open.mapquestapi.com/geocoding/v1/address?key=agvvu4mpL1dwAO4yamqLSuMjhqKClQiz&location=92821-3652')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      this.setState({
+        geoCodes: data.results[0],
+      })
+    });
+  }
+
   render() {
     return (
       <div style={wrapperStyles}>

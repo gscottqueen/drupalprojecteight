@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Recalls from './Recalls'
-import Map from './Map'
+import Map from './Map/Map'
 
 class App extends Component {
 
@@ -34,6 +34,8 @@ class App extends Component {
 
     const todaysDateFormated = formatDate(todaysDate)
     const rangeDateFormated = formatDate(startDate)
+
+    // get our zipcodes
 
     fetch('https://api.fda.gov/food/enforcement.json?search=report_date:[' + rangeDateFormated + '+TO+' + todaysDateFormated + ']&limit=100')
       .then(response => response.json())
@@ -69,11 +71,11 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-      <Map></Map>
+      <Map recallData={this.state.recalls}></Map>
         <div className="disclaimer usa-alert usa-alert-info" role="alert">
-          <div class="usa-alert-body">
-            <h3 class="usa-alert-heading">About These Results</h3>
-            <p class="usa-alert-text">{this.state.disclaimer}</p>
+          <div className="usa-alert-body">
+            <h3 className="usa-alert-heading">About These Results</h3>
+            <p className="usa-alert-text">{this.state.disclaimer}</p>
           </div>
         </div>
         <Recalls recallData={this.state.recalls} />
