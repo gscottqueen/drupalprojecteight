@@ -71,7 +71,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-      <Map recallData={this.state.recalls}></Map>
+      {!this.state.recalls ? null : <Map recallData={this.state.recalls}></Map>}
         <div className="disclaimer usa-alert usa-alert-info" role="alert">
           <div className="usa-alert-body">
             <h3 className="usa-alert-heading">About These Results</h3>

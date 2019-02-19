@@ -20,27 +20,38 @@ class Map extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
-
-
     this.state = {
       // recalls: [],
       geoCodes: [],
     };
   }
-  componentDidMount() {
 
+  componentDidMount(props) {
+
+    // console.log('props', props.recallData)
+
+
+    // get our fda response
+    // console.log('geocodes', this.state.geoCodes)
+    // console.log('props', props.recallData)
+
+    // iterate through that and create a new array with just the zips
+
+    // sent the new zips array to mapquest
     fetch('http://open.mapquestapi.com/geocoding/v1/address?key=agvvu4mpL1dwAO4yamqLSuMjhqKClQiz&location=92821-3652')
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
       this.setState({
         geoCodes: data.results[0],
       })
+      // console.log('geocodes', this.state.geoCodes)
     });
   }
 
-  render() {
+  render(props) {
+    const recalls = props
+    console.log(recalls)
     return (
       <div style={wrapperStyles}>
         <ComposableMap
