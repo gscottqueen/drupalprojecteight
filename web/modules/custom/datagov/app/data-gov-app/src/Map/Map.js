@@ -12,30 +12,9 @@ import GeoJSON from './world-50m.json'
 
 const wrapperStyles = {
   width: "100%",
+  maxWidth: 980,
+  margin: "0 auto",
 }
-
-// const markers = [
-//   { markerOffset: -25, name: "Buenos Aires", coordinates: [-58.3816, -34.6037] },
-//   { markerOffset: -25, name: "La Paz", coordinates: [-68.1193, -16.4897] },
-//   { markerOffset: 35, name: "Brasilia", coordinates: [-47.8825, -15.7942] },
-//   { markerOffset: 35, name: "Santiago", coordinates: [-70.6693, -33.4489] },
-//   { markerOffset: 35, name: "Bogota", coordinates: [-74.0721, 4.7110] },
-//   { markerOffset: 35, name: "Quito", coordinates: [-78.4678, -0.1807] },
-//   { markerOffset: -25, name: "Georgetown", coordinates: [-58.1551, 6.8013] },
-//   { markerOffset: -25, name: "Asuncion", coordinates: [-57.5759, -25.2637] },
-//   { markerOffset: 35, name: "Paramaribo", coordinates: [-55.2038, 5.8520] },
-//   { markerOffset: 35, name: "Montevideo", coordinates: [-56.1645, -34.9011] },
-//   { markerOffset: -25, name: "Caracas", coordinates: [-66.9036, 10.4806] },
-// ]
-
-// const markers = [
-//   { 
-//     markerOffset: -25, 
-//     name: "Centerville", 
-//     coordinates: [ -95, 25 ] 
-//   }
-// ]
-// console.log(markers)
 
 function parseZips(recalls) {
   let recallsArray = recalls
@@ -60,7 +39,10 @@ function parseLatLang(geoCodes) {
     return { 
       markerOffset: -25,
       name: "Recall", 
-      coordinates: [ location.locations[0].latLng.lng , location.locations[0].latLng.lat ]
+      coordinates: [ 
+        location.locations[0].latLng.lng, 
+        location.locations[0].latLng.lat 
+      ]
     }
   })
   return LatLangArray
@@ -85,7 +67,6 @@ class Map extends Component {
     .then(data => {
       this.setState({
         geoCodes: data.results,
-        recallMarkers: parseLatLang(this.state.geoCodes)
       })
     });
   }
@@ -93,22 +74,21 @@ class Map extends Component {
   render() {
 
     const markers = parseLatLang(this.state.geoCodes)
-    console.log(markers)
 
     return (
       <div style={wrapperStyles}>
         <ComposableMap
-          projectionConfig={{ scale: 1000 }}
-          width={1000}
-          height={1000}
+          projectionConfig={{
+            scale: 200,
+          }}
+          width={980}
+          height={600}
           style={{
             width: "100%",
             height: "auto",
-            margin: "0px",
-            maxWidth: "100%",
           }}
           >
-          <ZoomableGroup center={[ -95, 25 ]} disablePanning>
+          <ZoomableGroup center={[0,20]} disablePanning>
             <Geographies geography={GeoJSON}>
               {(geographies, projection) =>
                 geographies.map((geography, i) =>
@@ -142,7 +122,6 @@ class Map extends Component {
             </Geographies>
             <Markers>
               {markers.map((marker, i) => (
-                console.log(marker),
                 <Marker
                   key={i}
                   marker={marker}
@@ -155,14 +134,14 @@ class Map extends Component {
                   <circle
                     cx={0}
                     cy={0}
-                    r={10}
+                    r={5}
                     style={{
                       stroke: "#FF5722",
-                      strokeWidth: 3,
+                      strokeWidth: .1,
                       opacity: 0.9,
                     }}
                   />
-                  <text
+                  {/* <text
                     textAnchor="middle"
                     y={marker.markerOffset}
                     style={{
@@ -171,7 +150,7 @@ class Map extends Component {
                     }}
                     >
                     {marker.name}
-                  </text>
+                  </text> */}
                 </Marker>
               ))}
             </Markers>
