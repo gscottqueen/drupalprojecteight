@@ -28,18 +28,17 @@ const wrapperStyles = {
 //   { markerOffset: -25, name: "Caracas", coordinates: [-66.9036, 10.4806] },
 // ]
 
-const markers = [
-  { 
-    markerOffset: -25, 
-    name: "Centerville", 
-    coordinates: [ -95, 25 ] 
-  }
-]
+// const markers = [
+//   { 
+//     markerOffset: -25, 
+//     name: "Centerville", 
+//     coordinates: [ -95, 25 ] 
+//   }
+// ]
+// console.log(markers)
 
 function parseZips(recalls) {
-
   let recallsArray = recalls
-
   let zips = recallsArray.map(function(recall) {
     if (recall.postal_code === "" || recall.postal_code === undefined){
       let index = recalls.indexOf(recall)
@@ -55,6 +54,19 @@ function parseZips(recalls) {
 }
 
 
+function parseLatLang(geoCodes) {
+  let locationsArray = geoCodes
+  let LatLangArray = locationsArray.map(function(location) {
+    return { 
+      markerOffset: -25,
+      name: "Recall", 
+      coordinates: [ location.locations[0].latLng.lng , location.locations[0].latLng.lat ]
+    }
+  })
+  return LatLangArray
+}
+
+
 class Map extends Component {
 
   constructor(props) {
@@ -62,22 +74,27 @@ class Map extends Component {
     this.state = {
       geoCodes: [],
       zips: parseZips(props.recallData),
+      recallMarkers: [], 
     };
   }
 
   componentDidMount() {
-
     // send the new zips array to mapquest
     fetch('http://open.mapquestapi.com/geocoding/v1/batch?&maxResults=1&key=agvvu4mpL1dwAO4yamqLSuMjhqKClQiz' + this.state.zips + '')
     .then(response => response.json())
     .then(data => {
       this.setState({
         geoCodes: data.results,
+        recallMarkers: parseLatLang(this.state.geoCodes)
       })
     });
   }
 
   render() {
+
+    const markers = parseLatLang(this.state.geoCodes)
+    console.log(markers)
+
     return (
       <div style={wrapperStyles}>
         <ComposableMap
@@ -125,6 +142,7 @@ class Map extends Component {
             </Geographies>
             <Markers>
               {markers.map((marker, i) => (
+                console.log(marker),
                 <Marker
                   key={i}
                   marker={marker}
