@@ -21,7 +21,7 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // recalls: [],
+      recalls: props.recallData,
       geoCodes: [],
     };
   }
