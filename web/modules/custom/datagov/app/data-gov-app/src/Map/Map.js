@@ -4,8 +4,8 @@ import {
   ZoomableGroup,
   Geographies,
   Geography,
-  // Markers,
-  // Marker,
+  Markers,
+  Marker,
 } from "react-simple-maps"
 
 import GeoJSON from './world-50m.json'
@@ -16,51 +16,73 @@ const wrapperStyles = {
   margin: "0 auto",
 }
 
+function parseZips(recalls) {
+  let recallsArray = recalls
+  let zips = recallsArray.map(function(recall) {
+    if (recall.postal_code === "" || recall.postal_code === undefined){
+      let index = recalls.indexOf(recall)
+      recalls.splice(index, 1)
+    } else {
+      return '&location=' + recall.postal_code
+    }
+  })
+
+  let batchZips = JSON.stringify(zips)
+  let stringZips = batchZips.replace(/[^a-z0-9&=-]/g, "")
+  return stringZips
+}
+
+
+function parseLatLang(geoCodes) {
+  let locationsArray = geoCodes
+  let LatLangArray = locationsArray.map(function(location) {
+    return { 
+      markerOffset: -25,
+      name: "Recall", 
+      coordinates: [ 
+        location.locations[0].latLng.lng, 
+        location.locations[0].latLng.lat 
+      ]
+    }
+  })
+  return LatLangArray
+}
+
+
 class Map extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      // recalls: [],
       geoCodes: [],
+      zips: parseZips(props.recallData),
+      recallMarkers: [], 
     };
   }
 
-  componentDidMount(props) {
-
-    // console.log('props', props.recallData)
-
-
-    // get our fda response
-    // console.log('geocodes', this.state.geoCodes)
-    // console.log('props', props.recallData)
-
-    // iterate through that and create a new array with just the zips
-
-    // sent the new zips array to mapquest
-    fetch('http://open.mapquestapi.com/geocoding/v1/address?key=agvvu4mpL1dwAO4yamqLSuMjhqKClQiz&location=92821-3652')
+  componentDidMount() {
+    // send the new zips array to mapquest
+    fetch('http://open.mapquestapi.com/geocoding/v1/batch?&maxResults=1&key=agvvu4mpL1dwAO4yamqLSuMjhqKClQiz' + this.state.zips + '')
     .then(response => response.json())
     .then(data => {
-      // console.log(data)
       this.setState({
-        geoCodes: data.results[0],
+        geoCodes: data.results,
       })
-      // console.log('geocodes', this.state.geoCodes)
     });
   }
 
-  render(props) {
-    const recalls = props
-    console.log(recalls)
+  render() {
+
+    const markers = parseLatLang(this.state.geoCodes)
+
     return (
       <div style={wrapperStyles}>
         <ComposableMap
           projectionConfig={{
-            scale: 205,
-            rotation: [-11,0,0],
+            scale: 200,
           }}
           width={980}
-          height={551}
+          height={600}
           style={{
             width: "100%",
             height: "auto",
@@ -68,34 +90,70 @@ class Map extends Component {
           >
           <ZoomableGroup center={[0,20]} disablePanning>
             <Geographies geography={GeoJSON}>
-              {(geographies, projection) => geographies.map((geography, i) => geography.id !== "ATA" && (
-                <Geography
-                  key={i}
-                  geography={geography}
-                  projection={projection}
-                  style={{
-                    default: {
-                      fill: "#ECEFF1",
-                      stroke: "#607D8B",
-                      strokeWidth: 0.75,
-                      outline: "none",
-                    },
-                    hover: {
-                      fill: "#607D8B",
-                      stroke: "#607D8B",
-                      strokeWidth: 0.75,
-                      outline: "none",
-                    },
-                    pressed: {
-                      fill: "#FF5722",
-                      stroke: "#607D8B",
-                      strokeWidth: 0.75,
-                      outline: "none",
-                    },
-                  }}
-                />
-              ))}
+              {(geographies, projection) =>
+                geographies.map((geography, i) =>
+                    <Geography
+                      key={i}
+                      geography={geography}
+                      projection={projection}
+                      style={{
+                        default: {
+                          fill: "#ECEFF1",
+                          stroke: "#607D8B",
+                          strokeWidth: 0.75,
+                          outline: "none",
+                        },
+                        hover: {
+                          fill: "#CFD8DC",
+                          stroke: "#607D8B",
+                          strokeWidth: 0.75,
+                          outline: "none",
+                        },
+                        pressed: {
+                          fill: "#FF5722",
+                          stroke: "#607D8B",
+                          strokeWidth: 0.75,
+                          outline: "none",
+                        },
+                      }}
+                    />
+                  )
+              }
             </Geographies>
+            <Markers>
+              {markers.map((marker, i) => (
+                <Marker
+                  key={i}
+                  marker={marker}
+                  style={{
+                    default: { fill: "#FF5722" },
+                    hover: { fill: "#FFFFFF" },
+                    pressed: { fill: "#FF5722" },
+                  }}
+                  >
+                  <circle
+                    cx={0}
+                    cy={0}
+                    r={5}
+                    style={{
+                      stroke: "#FF5722",
+                      strokeWidth: .1,
+                      opacity: 0.9,
+                    }}
+                  />
+                  {/* <text
+                    textAnchor="middle"
+                    y={marker.markerOffset}
+                    style={{
+                      fontFamily: "Roboto, sans-serif",
+                      fill: "#607D8B",
+                    }}
+                    >
+                    {marker.name}
+                  </text> */}
+                </Marker>
+              ))}
+            </Markers>
           </ZoomableGroup>
         </ComposableMap>
       </div>

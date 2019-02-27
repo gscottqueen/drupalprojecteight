@@ -36,7 +36,6 @@ class App extends Component {
     const rangeDateFormated = formatDate(startDate)
 
     // get our zipcodes
-
     fetch('https://api.fda.gov/food/enforcement.json?search=report_date:[' + rangeDateFormated + '+TO+' + todaysDateFormated + ']&limit=100')
       .then(response => response.json())
       .then(data => {
@@ -71,7 +70,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-      {!this.state.recalls ? null : <Map recallData={this.state.recalls}></Map>}
+      {!this.state.recalls.length ? null : <Map recallData={this.state.recalls}></Map>}
         <div className="disclaimer usa-alert usa-alert-info" role="alert">
           <div className="usa-alert-body">
             <h3 className="usa-alert-heading">About These Results</h3>
