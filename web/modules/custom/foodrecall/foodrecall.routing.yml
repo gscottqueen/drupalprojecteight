@@ -2,6 +2,6 @@ foodrecall.content:
   path: '/foodrecall'
   defaults:
     _controller: 'Drupal\foodrecall\Controller\FoodRecallController::content'
-    _title: 'Hello world'
+    _title: 'Food Recall'
   requirements:
     _permission: 'access content'

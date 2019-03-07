@@ -12,7 +12,7 @@ class FoodRecallController extends ControllerBase {
   public function content() {
     return array(
       '#type' => 'markup',
-      '#markup' => t('Hello world'),
+      '#markup' => '<div id="foodrecall"></div>',
     );
   }
 }
