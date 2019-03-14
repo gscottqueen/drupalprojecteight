@@ -1,0 +1,12 @@
+foodrecall-app:
+  version: 1.x
+  css:
+    theme:
+      ./app/foodrecall-app/build/static/css/main.chunk.css: {}
+  js:
+    ./app/foodrecall-app/build/static/js/1.chunk.js: {}
+    ./app/foodrecall-app/build/static/js/main.chunk.js: {}
+    ./app/foodrecall-app/build/static/js/runtime~main.js: {}
+  # media:
+  #   ./app/foodrecall-app/build/static/media/logo.svg: {}
+
