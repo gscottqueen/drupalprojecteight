@@ -26,7 +26,7 @@ function parseDate(date) {
 
 function Recalls(props) {
   const recalls = props.recallData;
-  const recallList = recalls.map((recall, index, comma) =>
+  const recallList = recalls.map((recall, index) =>
     <AccordionItem className="recall-list--item usa-accordion-bordered" key={index}>
       <AccordionItemTitle className="recall-list--item-detail usa-accordion-button" aria-expanded="false">
         <time className="recall-list--item-detail_date" dateTime={recall.report_date}>{parseDate(recall.report_date)}</time>

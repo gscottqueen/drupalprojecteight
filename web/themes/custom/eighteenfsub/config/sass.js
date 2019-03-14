@@ -13,9 +13,9 @@ var runSequence = require('run-sequence');
 
 gulp.task('copy-doc-styles', function (done) {
 
-  dutil.logMessage('copy-doc-styles', 'Copying Sass files from css/');
+  dutil.logMessage('copy-doc-styles', 'Copying Sass files');
 
-  var stream = gulp.src('./scss/**/*.scss')
+  var stream = gulp.src('sass/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(glob())
     .on('error', log.error)
@@ -24,46 +24,35 @@ gulp.task('copy-doc-styles', function (done) {
       browsers: ['cover 99.5%', 'last 2 major versions', 'last 3 ie versions'],
       cascade: false
       }) ]))
-    .pipe(gulp.dest('assets/css'))
+    .pipe(gulp.dest('./assets/css/'))
     .pipe(cssnano())
     .pipe(rename('styles.min.css'))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('assets/css/'));
+    .pipe(gulp.dest('./assets/css/'));
 
   return stream;
 
 });
 
-gulp.task('copy-uswds-styles', function (done) {
+// gulp.task('lint-scss', function (done) {
 
-  dutil.logMessage('copy-uswds-styles', 'Copying Sass files from uswds');
+//   // if (!cFlags.test) {
+//   //   dutil.logMessage('lint-scss', 'Skipping linting of Sass files.');
+//   //   return done();
+//   // }
 
-  var stream = gulp.src('./node_modules/uswds/src/stylesheets/**/*')
-    .pipe(gulp.dest('assets/css/vendor/uswds'));
+//   return gulp.src([
+//     './scss/**/*.scss'
+//     ])
+//     .pipe(linter({
+//       syntax: 'scss',
+//       reporters: [{formatter: 'verbose', console: true}],
+//       // fix: true,
+//       debug: true
+//     }))
+//     // .pipe(gulp.dest('scss'))
 
-  return stream;
-
-});
-
-gulp.task('lint-scss', function (done) {
-
-  // if (!cFlags.test) {
-  //   dutil.logMessage('lint-scss', 'Skipping linting of Sass files.');
-  //   return done();
-  // }
-
-  return gulp.src([
-    './scss/**/*.scss'
-    ])
-    .pipe(linter({
-      syntax: 'scss',
-      reporters: [{formatter: 'verbose', console: true}],
-      // fix: true,
-      debug: true
-    }))
-    // .pipe(gulp.dest('scss'))
-
-});
+// });
 
 gulp.task('sass', gulp.series('copy-doc-styles'), function(done) {
 

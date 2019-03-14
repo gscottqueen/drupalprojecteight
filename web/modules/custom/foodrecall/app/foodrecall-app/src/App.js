@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import Recalls from './Recalls'
-import Map from './Map/Map'
+import Checkbox from './Checkbox'
+// import Map from './Map/Map'
 
 class App extends Component {
 
@@ -11,8 +12,41 @@ class App extends Component {
     this.state = {
       recalls: [],
       disclaimer: '',
+      checkboxes: classSelectOptions.reduce(
+        (options, option) => ({
+          ...options,
+          [option]: false
+        }),
+        {}
+      )
     };
   }
+
+  // start filters form
+
+  handleCheckboxChange = changeEvent => {
+    const { name } = changeEvent.target;
+
+    this.setState(prevState => ({
+      checkboxes: {
+        ...prevState.checkboxes,
+        [name]: !prevState.checkboxes[name]
+      }
+    }));
+  };
+
+  createCheckboxes = () => classSelectOptions.map(this.createCheckbox);
+
+  createCheckbox = option => (
+    <Checkbox
+      label={option}
+      isSelected={this.state.checkboxes[option]}
+      onCheckboxChange={this.handleCheckboxChange}
+      key={option}
+    />
+  );
+
+  // end filters form
 
   componentDidMount() {
     // dates for our query
@@ -68,15 +102,19 @@ class App extends Component {
   }
 
   render () {
+
     return (
       <div className="App">
-      {!this.state.recalls.length ? null : <Map recallData={this.state.recalls}></Map>}
+      {/* {!this.state.recalls.length ? null : <Map recallData={this.state.recalls}></Map>} */}
         <div className="disclaimer usa-alert usa-alert-info" role="alert">
           <div className="usa-alert-body">
             <h3 className="usa-alert-heading">About These Results</h3>
             <p className="usa-alert-text">{this.state.disclaimer}</p>
           </div>
         </div>
+        <form>
+          {this.createCheckboxes()}
+        </form>
         <Recalls recallData={this.state.recalls} />
       </div>
     );
