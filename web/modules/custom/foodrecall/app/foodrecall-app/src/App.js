@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import Recalls from './Recalls'
-import Checkbox from './Checkbox'
-// import Map from './Map/Map'
+// import Checkbox from './Checkbox'
+import Map from './Map/Map'
 
 class App extends Component {
 
@@ -12,39 +12,39 @@ class App extends Component {
     this.state = {
       recalls: [],
       disclaimer: '',
-      checkboxes: classSelectOptions.reduce(
-        (options, option) => ({
-          ...options,
-          [option]: false
-        }),
-        {}
-      )
+      // checkboxes: classSelectOptions.reduce(
+      //   (options, option) => ({
+      //     ...options,
+      //     [option]: false
+      //   }),
+      //   {}
+      // )
     };
   }
 
   // start filters form
 
-  handleCheckboxChange = changeEvent => {
-    const { name } = changeEvent.target;
+  // handleCheckboxChange = changeEvent => {
+  //   const { name } = changeEvent.target;
 
-    this.setState(prevState => ({
-      checkboxes: {
-        ...prevState.checkboxes,
-        [name]: !prevState.checkboxes[name]
-      }
-    }));
-  };
+  //   this.setState(prevState => ({
+  //     checkboxes: {
+  //       ...prevState.checkboxes,
+  //       [name]: !prevState.checkboxes[name]
+  //     }
+  //   }));
+  // };
 
-  createCheckboxes = () => classSelectOptions.map(this.createCheckbox);
+  // createCheckboxes = () => classSelectOptions.map(this.createCheckbox);
 
-  createCheckbox = option => (
-    <Checkbox
-      label={option}
-      isSelected={this.state.checkboxes[option]}
-      onCheckboxChange={this.handleCheckboxChange}
-      key={option}
-    />
-  );
+  // createCheckbox = option => (
+  //   <Checkbox
+  //     label={option}
+  //     isSelected={this.state.checkboxes[option]}
+  //     onCheckboxChange={this.handleCheckboxChange}
+  //     key={option}
+  //   />
+  // );
 
   // end filters form
 
@@ -53,14 +53,14 @@ class App extends Component {
     const todaysDate = new Date()
     const range = new Date().setDate(todaysDate.getDate() - 200)
     const startDate = new Date(range)
-    
+
     // format our dates for the api params
     function formatDate(date) {
       let d = date,
           year = d.getFullYear(),
           month = '' + (d.getMonth() + 1),
           day = '' + d.getDate();
-      
+
       if (month.length < 2) month = '0' + month;
       if (day.length < 2) day = '0' + day;
       return [year, month, day].join('');
@@ -83,7 +83,7 @@ class App extends Component {
 
             if (dateA > dateB) {
               return -1
-            } 
+            }
             if (dateA < dateB) {
               return 1
             }
@@ -105,16 +105,16 @@ class App extends Component {
 
     return (
       <div className="App">
-      {/* {!this.state.recalls.length ? null : <Map recallData={this.state.recalls}></Map>} */}
+      {!this.state.recalls.length ? null : <Map recallData={this.state.recalls}></Map>}
         <div className="disclaimer usa-alert usa-alert-info" role="alert">
           <div className="usa-alert-body">
             <h3 className="usa-alert-heading">About These Results</h3>
             <p className="usa-alert-text">{this.state.disclaimer}</p>
           </div>
         </div>
-        <form>
+        {/* <form>
           {this.createCheckboxes()}
-        </form>
+        </form> */}
         <Recalls recallData={this.state.recalls} />
       </div>
     );
