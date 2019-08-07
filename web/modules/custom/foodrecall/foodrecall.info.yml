@@ -1,5 +1,5 @@
 name: Food Recall Module
-description: An experimental module to build our first Drupal 8 module
+description: Taps the Data.gov Food Recall API and Maps global points
 package: Custom
 type: module
 version: 1.0

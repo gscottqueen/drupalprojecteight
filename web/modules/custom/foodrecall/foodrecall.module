@@ -1,8 +1,17 @@
 <?php
 
+/**
+ * @file
+ * Conditionally attach an asset.
+ */
+
+/**
+ * Match our route with the return from getRouteName.
+ *
+ * @array &$attachments from our library
+ */
 function foodrecall_page_attachments(array &$attachments) {
   $route_name = \Drupal::routeMatch()->getRouteName();
-  // Conditionally attach an asset to the page.
   if ($route_name === 'foodrecall.content') {
     $attachments['#attached']['library'][] = 'foodrecall/foodrecall-app';
   }
