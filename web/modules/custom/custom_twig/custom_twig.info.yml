@@ -1,0 +1,5 @@
+name: 'custom_twig'
+type: module
+description: 'Provides space for custom twig functions and filters'
+core: 8.x
+package: 'Custom'
