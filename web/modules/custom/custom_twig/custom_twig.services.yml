@@ -1,0 +1,5 @@
+services:
+  react_component.twig.extension:
+    class: Drupal\custom_twig\TwigExtension\ReactId
+    tags:
+      - { name: twig.extension }

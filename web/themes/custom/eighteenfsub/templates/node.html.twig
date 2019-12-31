@@ -33,9 +33,7 @@
   {% endif %}
 
   <div{{ content_attributes.addClass('node__content') }}>
-    <div id="hello-world">
-      Hello World Loading...
-    </div>
+    {{ react_component("hello-world") }}
     <hr />
     Node content appears here:
     {{ content }}
