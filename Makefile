@@ -47,9 +47,27 @@ cex:
 	@echo "Exporting Configuration"
 	docker-compose run php drupal config:export -y
 
-gm:
-	@echo "Displaying Generate Module UI"
-	docker-compose run php drupal generate:module
+gen:
+	@echo "Generation powerd by Drupal Console"; \
+		if [ $(FOO) != null ]; \
+		then \
+			docker-compose run php drupal ${FOO}; \
+		else \
+			echo "Hang tight, getting you some help..."; \
+			docker-compose run php drupal generate; \
+			echo "Pass your abbreviated option to foo ie. make gen FOO=abv"; \
+		fi
+
+req:
+	@echo "New Package requirement for Composer to manage..."; \
+		if [ $(FOO) != null ]; \
+		then \
+			docker-compose run php composer require ${FOO}; \
+		else \
+			echo "Hang tight, getting you some help..."; \
+			docker-compose run php composer require --help; \
+			echo "Pass your package option to foo ie. make req FOO=package/package"; \
+		fi
 
 install-source:
 	@echo "Installing dependencies"
