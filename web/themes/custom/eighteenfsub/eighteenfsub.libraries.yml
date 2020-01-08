@@ -6,12 +6,6 @@ react:
     https://unpkg.com/react-dom@16/umd/react-dom.production.min.js: { external: true, minified: true }
     https://unpkg.com/babel-standalone@6.15.0/babel.min.js: { external: true, minified: true }
 hello-world:
-  version: 1.0.0
-  footer: true
+  version: 1.x
   js:
     components/hello-world.js: { preprocess: 0, attributes: { type: text/babel } }
-alert:
-  version: 1.0.0
-  footer: true
-  js:
-    components/alert.js: { preprocess: 0, attributes: { type: text/babel } }

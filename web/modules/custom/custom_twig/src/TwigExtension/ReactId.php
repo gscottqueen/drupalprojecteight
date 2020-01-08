@@ -22,7 +22,14 @@ class ReactId extends \Twig_Extension {
    * {@inheritdoc}
    */
   public function setId($id) {
+
     return [
+      '#attached' => [
+        'library' => [
+          'eighteenfsub/react',
+          'eighteenfsub/' . $id . '',
+        ],
+      ],
       '#markup' => '<div id="' . $id . '"></div>',
     ];
   }
