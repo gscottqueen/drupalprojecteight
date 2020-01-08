@@ -69,6 +69,14 @@ req:
 			echo "Pass your package option to foo ie. make req FOO=package/package"; \
 		fi
 
+dev-mode:
+	@echo "Setting up developer mode..."
+	docker-compose run php drupal site:mode dev
+
+prod-mode:
+	@echo "Setting up developer mode..."
+	docker-compose run php drupal site:mode prod
+
 install-source:
 	@echo "Installing dependencies"
 	docker-compose run php composer install --prefer-source
