@@ -9,9 +9,6 @@
   ]
 %}
 
-{{ attach_library('eighteenfsub/react') }}
-{{ attach_library('eighteenfsub/hello-world') }}
-
 <article{{ attributes.addClass(classes) }}>
 
   {{ title_prefix }}
@@ -35,7 +32,7 @@
   <div{{ content_attributes.addClass('node__content') }}>
     {{ react_component("hello-world") }}
     <hr />
-    Node content appears here:
+    Node content:
     {{ content }}
   </div>
 </article>
