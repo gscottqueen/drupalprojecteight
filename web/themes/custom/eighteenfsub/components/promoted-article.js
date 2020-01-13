@@ -40,7 +40,6 @@ class Promoted extends React.Component {
 
     let listItem = {
       minWidth: "33%",
-      // margin: "10px",
     }
 
     let imgStyle = {
