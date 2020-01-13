@@ -9,41 +9,65 @@ class Promoted extends React.Component {
   }
 
   componentDidMount() {
-    const endpoint = "//drupalproject.localhost:8000/jsonapi/node/article?fields[node--article]=title,created,changed,body?sort=created&include=field_image"
+    // get our data
+    const endpoint = "//drupalproject.localhost:8000/jsonapi/node/article?&include=field_image"
+
     fetch(endpoint)
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)
+          console.log(result);
           this.setState({
             images: result.included,
             articles: result.data,
           });
         },
         (error) => {
-          console.log(error)
+          console.log(error);
         }
-      )
+      );
   }
 
   render() {
+    // our styles
+    let listResetStyle = {
+      margin: '0',
+      padding: '0',
+      listStyle: 'none',
+      display: 'flex',
+      justifyContent: 'space-between',
+    }
 
-    // console.log("articles", this.state.articles)
-    // console.log("images", this.state.images)
-    // console.log(promo)
+    let listItem = {
+      minWidth: "33%",
+      // margin: "10px",
+    }
+
+    let imgStyle = {
+      maxHeight: "240px",
+    }
+
+
     return (
-      <ul>
+      <ul style={listResetStyle}>
         {this.state.images.map((item, index) => {
+          console.log(item)
           return (
             <React.Fragment>
-            <li id={index}>
-                <img src={item.attributes.uri.url} />
-                {this.state.articles.map((item,key) => {
-                  if (key === index) {
-                    return <div>{item.attributes.title}</div>
-                  }
-                })}
-            </li>
+                  <li id={index} style={listItem}>
+                    <img
+                      src={item.attributes.uri.url}
+                      style={imgStyle}/>
+                      {this.state.articles.map((item,key) => {
+                        if (key === index) {
+                          return (
+                          <div>
+                              <a href={'/node/' + item.attributes.drupal_internal__nid}>{item.attributes.title}</a>
+                          </div>
+                      )
+                    }
+                  })}
+                </li>
             </React.Fragment>
           )
         })}
