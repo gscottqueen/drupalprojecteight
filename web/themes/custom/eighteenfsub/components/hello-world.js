@@ -2,8 +2,17 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 
-// # Example 1: Simple Hello World code
-ReactDOM.render(
-  <h1>Hello there - world!</h1>,
-  document.getElementById('hello-world')
-);
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <p>It is {new Date().toLocaleTimeString()}.</p>
+    </div>
+  );
+  ReactDOM.render(
+    element,
+    document.getElementById("hello-world")
+  );
+}
+
+setInterval(tick, 1000);
