@@ -22,7 +22,6 @@ class ReactId extends \Twig_Extension {
    * {@inheritdoc}
    */
   public function setId($id) {
-
     return [
       '#attached' => [
         'library' => [
